@@ -1,0 +1,54 @@
+// 使用@font-face定义一个自定义字体，假设字体文件是.ttf格式
+@font-face {
+  font-family: 'Monaco'; // 指定字体名称
+  src: url('../../public/fonts/monaco.ttf') format('truetype'); // 指定字体文件的路径和格式，这里使用的是truetype格式
+  font-weight: normal; // 设置字体权重
+  font-style: normal; // 设置字体样式
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+}
+
+// 使用定义的字体
+body {
+  font-family: 'Monaco', sans-serif; // 在字体堆栈中使用自定义字体，作为首选项
+  color: #202020;
+}
+
+.nav-active {
+  background-color: #2479cc;
+  color: #fff !important;
+}
+
+.ul-none {
+  cursor: pointer;
+  list-style: none;
+  padding-inline-start: 0;
+  
+}
+a{
+  text-decoration: none;
+}
+.row{
+  --bs-gutter-x: 0;
+}
+html {
+  overflow-y: scroll;
+}
+.m-title {
+  font-size: 1.8rem;
+  border-bottom: 1px solid #ccc;
+}
+.btn{
+  --bs-btn-color: #fff;
+}
+.collapse {
+  &:not(.show) {
+    display: none;
+  }
+}
+$transition-collapse:         height .1s linear;
+$transition-collapse-width:   width .1s linear;
