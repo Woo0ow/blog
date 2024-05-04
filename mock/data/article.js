@@ -7,7 +7,7 @@ const articleLiTemplate = {
             title: '@ctitle(5,30)',
             abstract: '@cparagraph(3, 10)',
             tag: function () { return tags[getRandomInt(0, tags.length - 1)] },
-            'createdAt': '@datetime("yyyy-MM-dd HH:mm:ss")' // Mock a creation timestamp
+            'createdAt': '@datetime("yyyy-MM-dd")' // Mock a creation timestamp
 
         }
     ]

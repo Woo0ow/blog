@@ -2,7 +2,7 @@
     <div class="tags">
         <div class="m-title pt-4 pb-5 mb-2">标签</div>
         <div class="d-flex flex-wrap">
-            <router-link :to="`/?tag=${item.name}`" class="p-3 m-2" style="border: 1px solid #ccc;border-radius: .8rem;" v-for="item in tags" :key="item.id">{{item.name}}</router-link>
+            <router-link :to="{path:'/',query:{param:item.name}}" class="p-3 m-2" style="border: 1px solid #ccc;border-radius: .8rem;" v-for="item in tags" :key="item.id">{{item.name}}</router-link>
         </div>
     </div>
 </template>
@@ -17,7 +17,6 @@ import {getTags} from '@/api/tags.js'
         },
         mounted(){
             getTags().then(data=> {
-                console.log(data)
                 this.tags=data.tagsLi
             })
         }

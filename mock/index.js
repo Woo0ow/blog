@@ -1,7 +1,8 @@
 import { articleLiTemplate } from './data/article.js'
 import { tagsTemplate } from './data/tags.js'
 import { archiveTemplate } from './data/archive.js';
-Mock.mock('/article/list', 'get', articleLiTemplate);
+const articleLi=Mock.mock('/article/list', 'get', articleLiTemplate);
+console.log(articleLi);
 Mock.mock('/article', 'get', {
 
     'article': () => {

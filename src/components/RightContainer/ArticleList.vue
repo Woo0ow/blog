@@ -18,9 +18,9 @@
             </li>
         </ul>
         <div class="pager d-flex justify-content-between p-2 mb-5">
-            <div class="prev" v-show="current > 1" @click="pageChange(-1)">{{ "<<上一页" }}< /div>
+            <div class="prev" v-show="current > 1" @click="pageChange(-1)">{{ "<<上一页" }}</div>
                     <router-link class="mx-auto" to="/archive">博客归档</router-link>
-                    <div class="next" v-show="current < total" @click="pageChange(item.id)">下一页>></div>
+                    <div class="next" v-show="current < total" @click="pageChange(1)">下一页>></div>
             </div>
         </div>
 </template>
@@ -38,16 +38,16 @@ export default {
         }
     },
     mounted() {
-        if (!this.$route.params.tag)
+        if (!this.$route.query.param)
             getArticleList().then(data => {
-                this.articleLi = data.articleLi,
-                    this.li = this.articleLi.slice(this.current - 1, this.current + 3)
+                this.articleLi = data.articleLi
+                this.li = this.articleLi.slice(this.current - 1, this.current + 3)
                 this.total = Math.ceil(this.articleLi.length / this.itemsPerPage)
             })
-        if (this.$route.params.tag)
+        if (this.$route.query.param)
             getArticleList().then(data => {
-                this.articleLi = data.articleLi.filter(item=>item.tag===this.$route.params.tag),
-                    this.li = this.articleLi.slice(this.current - 1, this.current + 3)
+                this.articleLi = data.articleLi.filter(item => item.tag === this.$route.query.param)
+                this.li = this.articleLi.slice(this.current - 1, this.current + 3)
                 this.total = Math.ceil(this.articleLi.length / this.itemsPerPage)
             })
 
@@ -58,7 +58,6 @@ export default {
             const startIndex = (this.current - 1) * this.itemsPerPage
             const endIndex = startIndex + this.itemsPerPage
             this.li = this.articleLi.slice(startIndex, endIndex)
-            console.log(startIndex, endIndex)
         }
     }
 }
@@ -102,4 +101,5 @@ export default {
         cursor: pointer;
         ;
     }
-}</style>
+}
+</style>

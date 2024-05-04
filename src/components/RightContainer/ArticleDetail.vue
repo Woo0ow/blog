@@ -15,7 +15,6 @@ export default {
     computed:{
        htmlContent(){
         const res=this.$marked(this.markdownContent)
-        // console.log(res)
         return res
        }
     },
@@ -26,7 +25,6 @@ export default {
     created(){
         getArticleDetail(this.$route.params.id).then(data=>{
             this.markdownContent=data.article.content
-            console.log(this.markdownContent)
         })
     }
 }

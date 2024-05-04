@@ -99,7 +99,6 @@ export default {
     },
     watch: {
         '$route'(newRoute, oldRoute) {
-            console.log(newRoute)
             this.navLi.forEach(item => {
                 item.active = newRoute.path === item.path
             })

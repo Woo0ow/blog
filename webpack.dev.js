@@ -118,6 +118,7 @@ module.exports = {
     vue:'Vue',
     'vue-router':'VueRouter',
     'highlight.js':'hljs',
-    'mockjs':'Mock'
+    'mockjs':'Mock',
+    vuex:'Vuex'
   }
 };

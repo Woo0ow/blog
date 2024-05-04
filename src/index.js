@@ -24,4 +24,5 @@ marked.setOptions({
   });
 Vue.prototype.$marked=marked
 Vue.use(VueRouter);
+vue.use(Vuex)
 new Vue({ render: h => h(App), router }).$mount('#root');

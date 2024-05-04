@@ -22,7 +22,6 @@ export default {
     },
     created(){
         getArchiveList().then(data=>{
-            console.log(data)
             this.li=data.archiveLi
         })
     }
