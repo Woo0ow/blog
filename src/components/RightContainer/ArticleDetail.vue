@@ -24,8 +24,8 @@ export default {
 
     },
     created(){
-        getArticleDetail(1).then(data=>{
-            this.markdownContent=data.article
+        getArticleDetail(this.$route.params.id).then(data=>{
+            this.markdownContent=data.article.content
             console.log(this.markdownContent)
         })
     }

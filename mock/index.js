@@ -4,7 +4,10 @@ import { archiveTemplate } from './data/archive.js';
 Mock.mock('/article/list', 'get', articleLiTemplate);
 Mock.mock('/article', 'get', {
 
-    'article': () => { return `# hola\n 
+    'article': () => {
+        return {
+id:null,
+content:`# hola\n 
 这是一段测试内容\n
 ## hola world\n
 这是一段测试内容\n
@@ -15,11 +18,13 @@ console.log(\'hola world\');
 ### c \n
 \`\`\` c
 printf(\"hola world\");
-\`\`\` \n`}
+\`\`\` \n`
+}
+}
 
 
 })
 
 Mock.mock('/tags', 'get', tagsTemplate)
 
-Mock.mock('/archive','get',archiveTemplate)
+Mock.mock('/archive', 'get', archiveTemplate)

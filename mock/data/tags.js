@@ -1,4 +1,4 @@
-const tags = ['js', 'react', 'vue', '网络', 'java', 'python']
+const tags = ['ssh','gcc','js', 'react', 'vue', '网络', 'java', 'python']
 const tagsLi = tags.map((item, index) => {
     return { id: index, name: item }
 })
