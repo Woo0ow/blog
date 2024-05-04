@@ -86,6 +86,10 @@ module.exports = {
           outputPath: 'fonts',
         },
       },
+      {
+        test: /\.md$/,
+        use: ['html-loader','markdown-loader']
+      }
     ],
   },
   resolve: {
