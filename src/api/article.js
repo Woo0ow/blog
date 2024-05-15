@@ -1,6 +1,7 @@
 import axios from 'axios'
 import gccMD from './data/gcc-linux.md'
 import sshAuthMD from './data/ssh-authorized.md'
+import encode from './data/encode.md'
 function getArticleList() {
     return axios.get('/article/list').then(res => {
         res.data.articleLi.unshift(
@@ -17,6 +18,13 @@ function getArticleList() {
                 abstract: '用编译源码的方式安装gcc',
                 tag: 'gcc',
                 createdAt: '2024-5-4'
+            },
+            {
+                id: '3',
+                title: '原码、反码、补码以及浮点数存储方式',
+                abstract: '介绍一下原码、反码、补码以及浮点数的存储方式',
+                tag: 'data-struct',
+                createdAt: '2024-5-15'
             }
         )
         return res.data
@@ -40,6 +48,14 @@ function getArticleDetail(id) {
                     article:{
                         id:2,
                         content:gccMD
+                    }
+                }
+                break;
+            case '3':
+                data={
+                    article:{
+                        id:3,
+                        content:encode
                     }
                 }
         }
