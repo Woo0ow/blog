@@ -25,7 +25,6 @@
         </div>
 </template>
 <script>
-import { getArticleList } from '@/api/article.js'
 export default {
     name: 'ArticleList',
     data() {
@@ -39,18 +38,18 @@ export default {
     },
     mounted() {
         if (!this.$route.query.param)
-            getArticleList().then(data => {
-                this.articleLi = data.articleLi
+            this.$store.dispatch('getArticleLi').then(() => {
+                this.articleLi = this.$store.state.article.articles; 
+                console.log(this.$store.state.article)
                 this.li = this.articleLi.slice(this.current - 1, this.current + 3)
                 this.total = Math.ceil(this.articleLi.length / this.itemsPerPage)
             })
         if (this.$route.query.param)
-            getArticleList().then(data => {
-                this.articleLi = data.articleLi.filter(item => item.tag === this.$route.query.param)
-                this.li = this.articleLi.slice(this.current - 1, this.current + 3)
-                this.total = Math.ceil(this.articleLi.length / this.itemsPerPage)
+            this.$store.dispatch('getArticleLi').then(()=> {
+                this.articleli = this.$store.state.article.articles.filter(item => item.tag === this.$route.query.param)
+                this.li = this.articleli.slice(this.current - 1, this.current + 3)
+                this.total = math.ceil(this.articleli.length / this.itemsperpage)
             })
-
     },
     methods: {
         pageChange(add) {

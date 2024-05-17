@@ -19,7 +19,7 @@
         color:#fff;
         z-index: 1;
         .more {
-            font-size: 2.5rem;
+            font-size: 2rem;
             height: 100%;
         }
         img{

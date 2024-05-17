@@ -5,6 +5,7 @@ import router from '@/router'
 import '../mock'
 import marked from 'marked'
 import './styles/a11y-dark.css'
+import store from '@/store'
 // 创建一个自定义渲染器
 const renderer = new marked.Renderer();
 
@@ -24,5 +25,4 @@ marked.setOptions({
   });
 Vue.prototype.$marked=marked
 Vue.use(VueRouter);
-Vue.use(Vuex)
-new Vue({ render: h => h(App), router }).$mount('#root');
+new Vue({ render: h => h(App), router,store}).$mount('#root');

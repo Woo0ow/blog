@@ -23,10 +23,11 @@ function getArticleList() {
                 id: '3',
                 title: '原码、反码、补码以及浮点数存储方式',
                 abstract: '介绍一下原码、反码、补码以及浮点数的存储方式',
-                tag: 'data-struct',
+                tag: 'data-structure',
                 createdAt: '2024-5-15'
             }
         )
+        res.data.articleLi.sort((a,b)=>parseInt(b.createdAt.replace(/-/g,''))-parseInt(a.createdAt.replace(/-/g,'')))
         return res.data
     })
 }
