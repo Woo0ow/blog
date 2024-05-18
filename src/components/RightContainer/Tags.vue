@@ -7,7 +7,6 @@
     </div>
 </template>
 <script>
-import {getTags} from '@/api/tags.js'
     export default{
         name:'Tags',
         data(){
@@ -16,9 +15,10 @@ import {getTags} from '@/api/tags.js'
             }
         },
         mounted(){
-            getTags().then(data=> {
-                this.tags=data.tagsLi
-            })
+           this.$store.dispatch('getTags').then(data=>{
+            console.log(data)
+            this.tags=data
+           }) 
         }
     }
 </script>

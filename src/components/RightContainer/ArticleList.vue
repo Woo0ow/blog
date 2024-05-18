@@ -40,7 +40,6 @@ export default {
         if (!this.$route.query.param)
             this.$store.dispatch('getArticleLi').then(() => {
                 this.articleLi = this.$store.state.article.articles; 
-                console.log(this.$store.state.article)
                 this.li = this.articleLi.slice(this.current - 1, this.current + 3)
                 this.total = Math.ceil(this.articleLi.length / this.itemsPerPage)
             })
@@ -48,7 +47,7 @@ export default {
             this.$store.dispatch('getArticleLi').then(()=> {
                 this.articleli = this.$store.state.article.articles.filter(item => item.tag === this.$route.query.param)
                 this.li = this.articleli.slice(this.current - 1, this.current + 3)
-                this.total = math.ceil(this.articleli.length / this.itemsperpage)
+                this.total = Math.ceil(this.articleli.length / this.itemsperpage)
             })
     },
     methods: {

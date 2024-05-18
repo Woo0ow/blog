@@ -1,7 +1,10 @@
 import axios from 'axios'
-function getArchiveList(){
-    return axios.get('/archive').then(resp=> resp.data)
+function getArchive(){
+    return axios.get('api/archive').then(data=>{
+       console.log(data.data) 
+       return data.data
+    })
 }
-export{
-    getArchiveList
+export default{
+    getArchive
 }

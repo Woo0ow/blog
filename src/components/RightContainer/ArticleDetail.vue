@@ -4,7 +4,6 @@
     </div>
 </template>
 <script>
-import { getArticleDetail } from '@/api/article.js'
 export default {
     name: 'ArticleDetail',
     data() {
@@ -23,9 +22,9 @@ export default {
 
     },
     created(){
-        getArticleDetail(this.$route.params.id).then(data=>{
-            this.markdownContent=data.article.content
-        })
+       this.$store.dispatch('getArticle',this.$route.params.id).then(()=>{
+        this.markdownContent=this.$store.state.article.article[0].content
+       })
     }
 }
 </script>

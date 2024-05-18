@@ -100,10 +100,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      favicon:'./public/favicon.ico',
-      inject:true,
-      scriptLoading:'blocking',
-      vueVersion:'https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js'
+      favicon: './public/favicon.ico',
+      inject: true,
+      scriptLoading: 'blocking',
+      vueVersion: 'https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js'
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
@@ -112,13 +112,13 @@ module.exports = {
     host: '0.0.0.0',
     port: 3000,
     historyApiFallback: true,
-    allowedHosts:'all'
+    allowedHosts: 'all'
   },
-  externals:{
-    vue:'Vue',
-    'vue-router':'VueRouter',
-    'highlight.js':'hljs',
-    'mockjs':'Mock',
-    vuex:'Vuex'
+  externals: {
+    vue: 'Vue',
+    'vue-router': 'VueRouter',
+    'highlight.js': 'hljs',
+    vuex: 'Vuex',
+    'mock.js': 'Mock'
   }
 };

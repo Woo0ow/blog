@@ -2,10 +2,10 @@
 import App from './App.vue'
 import './styles/common.scss'
 import router from '@/router'
-import '../mock'
 import marked from 'marked'
 import './styles/a11y-dark.css'
 import store from '@/store'
+import '../mock'
 // 创建一个自定义渲染器
 const renderer = new marked.Renderer();
 
