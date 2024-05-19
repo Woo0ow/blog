@@ -5,7 +5,7 @@
             <h3>{{ Item.createdAt }}</h3>
             <ul>
                 <li v-for="item in Item.data">
-                    <router-link :to="'/article/' + item.id">{{ item.title }}</router-link>
+                    <router-link :to="'/articles/' + item.id">{{ item.title }}</router-link>
                 </li>
             </ul>
         </div>
