@@ -5,7 +5,7 @@
             <h3>{{ Item.createdAt }}</h3>
             <ul>
                 <li v-for="item in Item.data">
-                    <router-link :to="'/article/'+item.id">{{ item.title }}</router-link>
+                    <router-link :to="'/article/' + item.id">{{ item.title }}</router-link>
                 </li>
             </ul>
         </div>
@@ -16,15 +16,14 @@ export default {
     name: 'Archive',
     data() {
         return {
-            li:[]
+            li: []
         }
     },
-    created(){
-    this.$store.dispatch('getArchive').then(()=>{
-const archive=this.$store.state.archive.archive
-this.li=archive
-console.log(archive)
-    })    
+    created() {
+        this.$store.dispatch('getArchive').then(() => {
+            const archive = this.$store.state.archive.archive
+            this.li = archive
+        })
     }
 }
 </script>

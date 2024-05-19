@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    name: 'ArticleDetail',
+    name: 'Article',
     data() {
         return {
             markdownContent:''

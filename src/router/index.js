@@ -2,11 +2,11 @@ import VueRouter from 'vue-router'
 const routes=[
     {
         path:'/',
-        component:()=>import('@/components/RightContainer/ArticleList.vue')
+        component:()=>import('@/components/RightContainer/Articles.vue')
     },
     {
-        path:'/article/:id',
-        component:()=>import('@/components/RightContainer/ArticleDetail.vue')
+        path:'/articles/:id',
+        component:()=>import('@/components/RightContainer/Article.vue')
     },
     {
         path:'/archive',
@@ -23,6 +23,10 @@ const routes=[
     {
         path:'/links',
         component:()=>import('@/components/RightContainer/Links.vue')
+    },
+    {
+        path:'/filter/:id',
+        component:()=>import('@/components/RightContainer/FilterArticles.vue')
     }
 ]
 export default new VueRouter({

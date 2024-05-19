@@ -6,15 +6,17 @@ const getters={
 
 }
 const actions={
-getTags(){
+getTags({commit}){
 return tags.getTags().then(data=>{
-    console.log(data)
-    return data.data
+  const tags=data.data;
+commit('setTags',tags)
 })
 }
 }
 const mutations={
-
+setTags(state,tags){
+  state.tags=tags
+}
 }
 export default {
   namespace: false,

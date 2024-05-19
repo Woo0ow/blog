@@ -3,7 +3,7 @@
         <div ref="leftContainer" class="left-container collapse collapse-horizontal d-md-none row col-md-3 col-xl-2" id="left-container" style="background-color: transparent;">
             <div class="col-6" style="background-color: #202020;">
                 <div class="profile pt-5 d-flex justify-content-center flex-wrap">
-                   <router-link to="/"><img :src="imgSrc" alt=""></router-link> 
+                   <img @click="()=>{$router.replace({path:'/'}).catch(err=>{});}" :src="imgSrc" alt=""> 
                     <div class="title text-center mt-3">{{ title }}</div>
                     <div class="description text-center mt-2">{{ description }}</div>
 
@@ -148,6 +148,7 @@ export default {
             width: 9.8rem;
             height: 9.8rem;
             border-radius: 50%;
+            cursor: pointer;
         }
 
         .title {
