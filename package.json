@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "a blog",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
+    "serve": "webpack serve",
+    "dev":"webpack --env development",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
