@@ -4,16 +4,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = function (env, argv) {
-    const isDeveplopment=env.development || env.WEBPACK_SERVE; 
+    const isDeveplopment = env.development || env.WEBPACK_SERVE;
     return {
-        mode: isDeveplopment? 'development' : 'production',
-        devtool:isDeveplopment? 'source-map' : 'none',
+        target:'web',
+        mode: isDeveplopment ? 'development' : 'production',
+        devtool: isDeveplopment ? 'source-map' : 'none',
         entry: './src/index.js',
         output: {
             filename: 'js/[name].bundle.js',
             path: path.resolve(__dirname, 'dist'),
-            publicPath:env.WEBPACK_SERVE?'/':'./',
+            publicPath: env.WEBPACK_SERVE ? '/' : './',
         },
         module: {
             rules: [
@@ -51,7 +53,13 @@ module.exports = function (env, argv) {
                 {
                     test: /\.css$/,
                     use: [
-                        'vue-style-loader',
+                        { 
+                            loader: MiniCssExtractPlugin.loader,
+                            options:{
+                                esModule: false
+                            } 
+                        },
+                        // 'vue-style-loader',
                         {
                             loader: 'css-loader',
                             options: {
@@ -63,7 +71,13 @@ module.exports = function (env, argv) {
                 {
                     test: /\.scss$/,
                     use: [
-                        'vue-style-loader',
+                        { 
+                            loader: MiniCssExtractPlugin.loader,
+                            options:{
+                               esModule: false
+                            } 
+                        },
+                       // 'vue-style-loader',
                         'css-loader',
                         {
                             loader: 'sass-loader',
@@ -99,38 +113,50 @@ module.exports = function (env, argv) {
         resolve: {
             alias: {
                 '@': path.resolve(__dirname, 'src'),
+                'vue$': path.resolve(__dirname, 'src/assets/js/vue2.js')
             },
         },
-        plugins: isDeveplopment? [
+        plugins: isDeveplopment ? [
             new HtmlWebpackPlugin({
                 template: './public/index.html',
                 favicon: './public/favicon.ico',
                 inject: true,
                 scriptLoading: 'blocking',
-                vueVersion:'https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js'
+                vueVersion: 'https://cdn.bootcdn.net/ajax/libs/vue/2.7.16/vue.js'
             }),
             new webpack.HotModuleReplacementPlugin(),
-        ]:[new HtmlWebpackPlugin({
-                template: './public/index.html',
-                favicon: './public/favicon.ico',
-                inject: true,
-                scriptLoading: 'blocking',
-                vueVersion:'https://cdn.jsdelivr.net/npm/vue@2',
-                minify: {
-                    removeComments: true,
-                    collapseWhitespace: true,
-                    removeAttributeQuotes: true,
-                    useShortDoctype: true,
-                },
-            }),new CleanWebpackPlugin(),new OptimizeCssAssetsWebpackPlugin()],
-        devServer: env.WEBPACK_SERVE? {
+            new MiniCssExtractPlugin({
+                linkType:"text/css",
+                filename:"css/[name].css"
+            })
+        ] : [new HtmlWebpackPlugin({
+            template: './public/index.html',
+            favicon: './public/favicon.ico',
+            inject: true,
+            scriptLoading: 'blocking',
+            vueVersion: 'https://cdn.bootcdn.net/ajax/libs/vue/2.7.16/vue.min.js',
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                useShortDoctype: true,
+            },
+        }),
+        new CleanWebpackPlugin(),
+        new OptimizeCssAssetsWebpackPlugin(),
+	new MiniCssExtractPlugin({
+                linkType:"text/css",
+                filename:"css/[name].css"
+            })
+        ],
+        devServer: env.WEBPACK_SERVE ? {
             hot: true,
             host: '0.0.0.0',
             port: 3000,
             historyApiFallback: true,
             allowedHosts: 'all'
-        }:{},
-        optimization:isDeveplopment?{}:{
+        } : {},
+        optimization: isDeveplopment ? {} : {
             splitChunks: {
                 chunks: 'all',
                 minSize: 2,

@@ -4,7 +4,7 @@
   "description": "a blog",
   "scripts": {
     "serve": "webpack serve",
-    "dev":"webpack --env development",
+    "dev": "webpack --env development",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,8 +19,9 @@
     "css-loader": "5.2.7",
     "file-loader": "6.2.0",
     "html-webpack-plugin": "4.5.2",
+    "mini-css-extract-plugin": "1.6.2",
     "optimize-css-assets-webpack-plugin": "6.0.1",
-    "raw-loader": "3",
+    "raw-loader": "3.1.0",
     "sass": "1.75.0",
     "sass-loader": "8.0.2",
     "style-loader": "2.0.0",

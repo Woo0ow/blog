@@ -1,5 +1,13 @@
 [
-{
+    {
+        "id": 5,
+        "title": "vue-router 懒加载加入加载动画",
+        "createdAt": "2024-5-25",
+        "abstract": "通过使用Vue 的全局事件总线来实现加入加载动画",
+        "tagId": 5,
+        "contentFileName": "vue-lazy-router-loading.md"
+    },
+    {
         "id": 4,
         "title": "码点是什么",
         "createdAt": "2024-5-19",

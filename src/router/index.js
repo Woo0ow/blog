@@ -29,6 +29,13 @@ const routes=[
         component:()=>import('@/components/RightContainer/FilterArticles.vue')
     }
 ]
-export default new VueRouter({
-    routes
-})
+const router= new VueRouter({routes})
+router.beforeEach((to, from, next) => {
+  router.app.$root.$emit('show-loading');
+  next();
+});
+
+router.afterEach(() => {
+  router.app.$root.$emit('hide-loading');
+});
+export default router 
