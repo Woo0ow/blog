@@ -56,7 +56,9 @@ module.exports = function (env, argv) {
                         { 
                             loader: MiniCssExtractPlugin.loader,
                             options:{
-                                esModule: false
+                                esModule: false,
+                                publicPath:env.WEBPACK_SERVE?'/':'../'
+
                             } 
                         },
                         // 'vue-style-loader',
@@ -74,7 +76,9 @@ module.exports = function (env, argv) {
                         { 
                             loader: MiniCssExtractPlugin.loader,
                             options:{
-                               esModule: false
+                               esModule: false,
+                                publicPath:env.WEBPACK_SERVE?'/':'../'
+
                             } 
                         },
                        // 'vue-style-loader',

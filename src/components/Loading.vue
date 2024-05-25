@@ -1,6 +1,6 @@
 <template>
-  <div v-if="visible" class="loader">
-    <div class="loader-spinner"></div>
+  <div v-if="visible" id="loader">
+    <div id="loader-spinner"></div>
   </div>
 </template>
 
@@ -15,11 +15,9 @@ export default {
   methods: {
     show() {
       this.visible = true;
-      console.log('show')
     },
     hide() {
       this.visible = false;
-      console.log('hide')
     },
   },
   created() {
@@ -34,30 +32,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.loader-spinner {
-  border: 4px solid #ddd;
-  border-top-color: #2479cc;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: loader-spin 1s linear infinite;
-}
-
-@keyframes loader-spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}</style>

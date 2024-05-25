@@ -1,6 +1,6 @@
 <template>
     <div class="top-container row fixed-top d-md-none col-12 align-items-center pt-2 pb-2">
-        <div class="col-3"><div class="btn text-center more" data-bs-toggle="collapse" data-bs-target="#left-container" aria-expanded="false" aria-controls="left-container"><i class="bi bi-sliders2"></i></div></div>
+        <div class="col-3"><div class="btn text-center more" style="color: #fff;" data-bs-toggle="collapse" data-bs-target="#left-container" aria-expanded="false" aria-controls="left-container"><i class="bi bi-sliders2"></i></div></div>
         <div class="col-6 text-center">hola world</div>
     </div>
 </template>

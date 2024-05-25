@@ -1,5 +1,13 @@
 [
     {
+        "id": 6,
+        "title": "cdn加载白屏 引入加载动画",
+        "createdAt": "2024-5-25",
+        "abstract": "通过cdn引入的第三方可加载时间较长导致白屏，引入加载动画提升用户体验",
+        "tagId": 5,
+        "contentFileName": "cdn-loading.md"
+    },
+    {
         "id": 5,
         "title": "vue-router 懒加载加入加载动画",
         "createdAt": "2024-5-25",

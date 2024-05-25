@@ -2,7 +2,7 @@ import VueRouter from 'vue-router'
 const routes=[
     {
         path:'/',
-        component:()=>import('@/components/RightContainer/Articles.vue')
+        component:()=>import(/* webpackPrefetch: true */'@/components/RightContainer/Articles.vue')
     },
     {
         path:'/articles/:id',

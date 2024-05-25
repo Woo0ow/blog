@@ -4,6 +4,8 @@ import './styles/common.scss'
 import router from '@/router'
 import marked from 'marked'
 import './styles/a11y-dark.css'
+import '@/styles/bootstrap.min.css'
+import '@/styles/bootstrap-icons.css'
 import store from '@/store'
 import '../mock'
 import '@/assets/js/bootstrap.js'
@@ -26,4 +28,9 @@ marked.setOptions({
   });
 Vue.prototype.$marked=marked
 Vue.use(VueRouter);
-new Vue({ render: h => h(App), router,store}).$mount('#root');
+new Vue({ render: h => h(App), router,store,mounted(){
+  const loader=document.getElementById('loader');
+  if(loader){
+   loader.parentNode.removeChild(loader); 
+  }
+}}).$mount('#root');
