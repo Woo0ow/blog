@@ -1,34 +1,32 @@
 <template>
     <div>
-        <div ref="leftContainer" class="left-container collapse collapse-horizontal d-md-none row col-md-3 col-xl-2" id="left-container" style="background-color: transparent;">
-            <div class="col-6" style="background-color: #202020;">
-                <div class="profile pt-5 d-flex justify-content-center flex-wrap">
-                   <img @click="()=>{$router.replace({path:'/'}).catch(err=>{});}" :src="imgSrc" alt=""> 
-                    <div class="title text-center mt-3">{{ title }}</div>
-                    <div class="description text-center mt-2">{{ description }}</div>
+        <div id="left-container" :class="`col-6 left-container collapse collapse-horizontal
+             d-md-none col-md-3 col-xl-2`" style="background-color: #202020;">
+            <div class="profile pt-5 d-flex justify-content-center flex-wrap">
+                <img @click="() => { $router.replace({ path: '/' }).catch(err => { }); }" :src="imgSrc" alt="">
+                <div class="title text-center mt-3">{{ title }}</div>
+                <div class="description text-center mt-2">{{ description }}</div>
 
-                    <!-- nav -->
-                    <ul class="nav-container mt-4 row">
-                        <li v-for="item in navLi" :key="item.id" class=" mb-2" @click="navChange(item)">
-                            <router-link
-                                :class="`d-flex align-items-center pt-2 pb-2 justify-content-center ${item.active ? 'nav-active' : ''}`"
-                                :to="item.path">
-                                <i :class="`bi ${item.icon}`"></i>
-                                <span style="padding-left:1.5rem;">{{ item.text }}</span>
-                            </router-link>
-                        </li>
-                    </ul>
-                </div>
-                <div class="d-flex justify-content-end model" style="width:100%;">
-                    <div class="btn d-block" data-bs-toggle="collapse" data-bs-target="#left-container"
-                        aria-expanded="false" aria-controls="left-container" style="color:#fff;font-size: 2rem;"><i
-                            class="bi bi-arrow-bar-left"></i>
-                    </div>
+                <!-- nav -->
+                <ul class="nav-container mt-4 row">
+                    <li v-for="item in navLi" :key="item.id" class=" mb-2" @click="navChange(item)">
+                        <router-link
+                            :class="`d-flex align-items-center pt-2 pb-2 justify-content-center ${item.active ? 'nav-active' : ''}`"
+                            :to="item.path">
+                            <i :class="`bi ${item.icon}`"></i>
+                            <span style="padding-left:1.5rem;">{{ item.text }}</span>
+                        </router-link>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex justify-content-end model" style="width:100%;">
+                <div class="btn d-block" @click="close" data-bs-toggle="collapse" data-bs-target="#left-container" style="color:#fff;font-size: 2rem;"><i
+                        class="bi bi-arrow-bar-left"></i>
                 </div>
             </div>
-            <div class="col-6" data-bs-toggle="collapse" data-bs-target="#left-container" aria-expanded="false"
-                aria-controls="left-container"></div>
         </div>
+        <div :class="`col-12 d-md-none ${isShow ? 'd-block' : 'd-none'}`" @click="close" data-bs-toggle="collapse" data-bs-target="#left-container"
+            style="z-index:2;position:fixed;left:0;top:0; background-color: transparent;height:100vh;"></div>
         <div class="left-container col-md-3 col-xl-2 d-none d-md-block">
             <div class="profile pt-5 d-flex justify-content-center flex-wrap">
                 <img :src="imgSrc" alt="">
@@ -59,42 +57,12 @@ export default {
             title: 'hola_world',
             description: '你好，世界',
             navLi: [
-                {
-                    id: 1,
-                    text: '首页',
-                    icon: 'bi-house-door',
-                    path: '/',
-                    active: true
-                },
-                {
-                    id: 2,
-                    text: '归档',
-                    icon: 'bi-folder',
-                    path: '/archive',
-                    active: false
-                },
-                {
-                    id: 3,
-                    text: '标签',
-                    icon: 'bi-tags',
-                    path: '/tags',
-                    active: false
-                },
-                {
-                    id: 4,
-                    text: '关于',
-                    icon: 'bi-info-circle',
-                    path: '/about',
-                    active: false
-                },
-                {
-                    id: 5,
-                    text: '友链',
-                    icon: 'bi-link-45deg',
-                    path: '/links',
-                    active: false
-                }
-            ]
+                { id: 1, text: '首页', icon: 'bi-house-door', path: '/', active: true },
+                { id: 2, text: '归档', icon: 'bi-folder', path: '/archive', active: false },
+                { id: 3, text: '标签', icon: 'bi-tags', path: '/tags', active: false },
+                { id: 4, text: '关于', icon: 'bi-info-circle', path: '/about', active: false },
+                { id: 5, text: '友链', icon: 'bi-link-45deg', path: '/links', active: false }]
+
         }
     },
     watch: {
@@ -104,12 +72,26 @@ export default {
             })
         }
     },
+    computed: {
+        isShow: {
+            get() {
+                return this.$store.state.common.navIsShow;
+            },
+            set() {
+
+            }
+        }
+    },
     methods: {
         navChange(item) {
             this.navLi.forEach(element => {
                 element.active = false
             });
             item.active = true
+        },
+        close(e) {
+            this.isShow = false
+            this.$store.commit('toggle', false)
         }
     },
     mounted() {
@@ -117,17 +99,15 @@ export default {
         this.navLi.forEach(item => {
             item.active = this.$route.path === item.path
         })
-
-        
+        this.isShow = this.$store.state.common.navIsShow;
     }
 }
 </script>
 <style lang="scss" scoped>
 @media(max-width:576px) {
     .left-container {
-        width: 100%;
-        transition: width .1s linear !important;
-        
+        transition: width .2s linear !important;
+
     }
 }
 
@@ -167,6 +147,8 @@ export default {
             padding: 0;
 
             li {
+                width: 100%;
+
                 a {
                     color: #999;
                 }

@@ -51,5 +51,6 @@ html {
     display: none;
   }
 }
-$transition-collapse:         height .1s linear;
-$transition-collapse-width:   width .1s linear;
+.row{
+      --bs-gutter-x:0 !important;
+}

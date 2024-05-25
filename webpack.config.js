@@ -154,7 +154,7 @@ module.exports = function (env, argv) {
             })
         ],
         devServer: env.WEBPACK_SERVE ? {
-            hot: true,
+            // hot: true,
             host: '0.0.0.0',
             port: 3000,
             historyApiFallback: true,

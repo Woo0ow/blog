@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="row">
+        <div>
             <!-- top-container -->
             <top-container />
             <!-- left-container -->
