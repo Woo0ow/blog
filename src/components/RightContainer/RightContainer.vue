@@ -1,7 +1,9 @@
 <template>
-    <div class="right-container col-12 offset-0 offset-md-3 col-md-9 offset-xl-2 col-xl-10 pt-sm-4">
-        <loading  style="width:95%;margin:0 auto;" />
+    <div class="right-container col-12 offset-0 offset-md-3 col-md-9 offset-xl-2 col-xl-10 pt-sm-4 pb-5">
+        <loading style="width:95%;margin:0 auto;" />
         <router-view style="width: 95%;margin:0 auto;" />
+        <div class="text-center pt-3 mt-5" style="width: 95%;margin:0 auto;color:#666;border-top: 1px solid #ccc;">Powered by
+            Yang Xiongjian</div>
     </div>
 </template>
 <script>

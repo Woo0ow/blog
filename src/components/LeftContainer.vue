@@ -104,7 +104,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@media(max-width:576px) {
+@media(max-width:768px) {
     .left-container {
         transition: width .2s linear !important;
 

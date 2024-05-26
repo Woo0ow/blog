@@ -11,18 +11,21 @@
                 <div>
                     <div class="abstract mb-4">{{ item.abstract }}</div>
                     <div class="row li-link">
-                        <router-link :to="'/filter/'+item.tagId" class="tag col-12 mb-3 col-xl-4 mb-xxl-0">「{{ item.tag }}」</router-link>
-                        <router-link :to="`/articles/${item.id}`" class="detail col-12 col-xl-8">阅读全文>></router-link>
+                        <router-link :to="'/filter/' + item.tagId" class="tag col-12 mb-3 col-xl-4 mb-xxl-0">「{{ item.tag
+                        }}」</router-link>
+                        <router-link :to="`/articles/${item.id}`" class="detail col-12 col-xl-8">阅读全文&gt;&gt;</router-link>
                     </div>
                 </div>
             </li>
         </ul>
-        <div class="pager d-flex justify-content-between p-2 mb-5">
-            <div class="prev" v-show="current > 1" @click="pageChange(-1)">{{ "<<上一页" }}</div>
-                    <router-link class="mx-auto" to="/archive">博客归档</router-link>
-                    <div class="next" v-show="current < total" @click="pageChange(1)">下一页>></div>
-            </div>
+        <div class="pager  p-2 mb-5">
+            <div v-show="current <= 1"></div>
+            <div class="text-start" v-show="current > 1" @click="pageChange(-1)">&lt;&lt;上一页</div>
+            <router-link class="text-center" to="/archive">博客归档</router-link>
+            <div class="text-end" v-show="current < total" @click="pageChange(1)">下一页&gt;&gt;</div>
+            <div v-show="current >= total"></div>
         </div>
+    </div>
 </template>
 <script>
 export default {
@@ -37,11 +40,11 @@ export default {
         }
     },
     mounted() {
-            this.$store.dispatch('getArticleLi').then(() => {
-                this.articleLi = this.$store.state.article.articles; 
-                this.li = this.articleLi.slice(this.current - 1, this.current + 3)
-                this.total = Math.ceil(this.articleLi.length / this.itemsPerPage)
-            })
+        this.$store.dispatch('getArticleLi').then(() => {
+            this.articleLi = this.$store.state.article.articles;
+            this.li = this.articleLi.slice(this.current - 1, this.current + 3)
+            this.total = Math.ceil(this.articleLi.length / this.itemsPerPage)
+        })
     },
     methods: {
         pageChange(add) {
@@ -85,12 +88,11 @@ export default {
 }
 
 .pager {
-    border-bottom: 1px solid #ccc;
     color: #2479cc;
-
+    display: grid;
+     grid-template-columns: 1fr 1fr 1fr; 
     div {
         cursor: pointer;
-        ;
     }
 }
 </style>
