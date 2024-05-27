@@ -1,4 +1,5 @@
 import VueRouter from 'vue-router'
+const BASE_URL='/blog'
 const routes=[
     {
         path:'/',
@@ -29,7 +30,11 @@ const routes=[
         component:()=>import('@/components/RightContainer/FilterArticles.vue')
     }
 ]
-const router= new VueRouter({routes})
+const router= new VueRouter({
+	mode:'history',
+    base:BASE_URL,
+    routes
+})
 router.beforeEach((to, from, next) => {
   router.app.$root.$emit('show-loading');
   next();
