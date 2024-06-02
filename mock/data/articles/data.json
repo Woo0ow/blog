@@ -1,10 +1,18 @@
 [
     {
+        "id": 9,
+        "title": "webpack-dev-server https配置 并用nginx反向代理",
+        "createdAt": "2024-6-2",
+        "abstract": "介绍 webpack-dev-server https配置 并用nginx反向代理",
+        "tagId": [7,8,9],
+        "contentFileName": "webpack-dev-serve-https-nginx.md"
+    },
+    {
         "id": 8,
         "title": "vue router BASE_URL 配置",
         "createdAt": "2024-5-27",
         "abstract": "介绍 在nginx环境下vue router 中的BASE_URL的配置",
-        "tagId": 5,
+        "tagId": [5],
         "contentFileName": "vue-router-baseurl.md"
     },
     {
@@ -12,7 +20,7 @@
         "title": "git 撤销远程提交",
         "createdAt": "2024-5-25",
         "abstract": "介绍git如何撤销一个远程提交",
-        "tagId": 6,
+        "tagId": [6],
         "contentFileName": "git-remote-revert.md"
     },
     {
@@ -20,7 +28,7 @@
         "title": "cdn加载白屏 引入加载动画",
         "createdAt": "2024-5-25",
         "abstract": "通过cdn引入的第三方库加载时间较长导致白屏，引入加载动画提升用户体验",
-        "tagId": 5,
+        "tagId": [5],
         "contentFileName": "cdn-loading.md"
     },
     {
@@ -28,7 +36,7 @@
         "title": "vue-router 懒加载加入加载动画",
         "createdAt": "2024-5-25",
         "abstract": "通过使用Vue 的全局事件总线来实现加入加载动画",
-        "tagId": 5,
+        "tagId": [5],
         "contentFileName": "vue-lazy-router-loading.md"
     },
     {
@@ -36,7 +44,7 @@
         "title": "码点是什么",
         "createdAt": "2024-5-19",
         "abstract": "介绍一下码点是什么",
-        "tagId": 4,
+        "tagId": [4],
         "contentFileName": "codepoint.md"
     },
     {
@@ -44,7 +52,7 @@
         "title": "原码、反码、补码以及浮点数存储方式",
         "createdAt": "2024-5-15",
         "abstract": "介绍一下原码、反码、补码以及浮点数的存储方式",
-        "tagId": 1,
+        "tagId": [1],
         "contentFileName": "encode.md"
     },
     {
@@ -52,7 +60,7 @@
         "title": "ssh免密登录",
         "createdAt": "2024-5-4",
         "abstract": "关于ssh的免密登录",
-        "tagId": 2,
+        "tagId": [2],
         "contentFileName": "ssh-authorized.md"
     },
     {
@@ -60,7 +68,7 @@
         "title": "源码编译安装gcc",
         "createdAt": "2024-5-4",
         "abstract": "用编译源码的方式安装gcc",
-        "tagId": 3,
+        "tagId": [3],
         "contentFileName": "gcc-linux.md"
     }
 ]

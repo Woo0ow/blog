@@ -18,7 +18,13 @@ export default function (options) {
             title,
             abstract,
             tagId,
-            tag:tags.filter(item=>item.id===tagId)[0].name,
+            tags:tagId.map(id=>{
+                for (let index = 0; index < tags.length; index++) {
+                    const tag=tags[index]
+                    if(tag.id===id)
+                        return tag
+                }
+            }),
             createdAt
         }
 
