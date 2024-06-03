@@ -12,7 +12,7 @@
         "title": "vue router BASE_URL 配置",
         "createdAt": "2024-5-27",
         "abstract": "介绍 在nginx环境下vue router 中的BASE_URL的配置",
-        "tagId": [5],
+        "tagId": [5,9],
         "contentFileName": "vue-router-baseurl.md"
     },
     {

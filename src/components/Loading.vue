@@ -15,9 +15,11 @@ export default {
   methods: {
     show() {
       this.visible = true;
+      this.$emit('onChange',this.visible)
     },
     hide() {
       this.visible = false;
+      this.$emit('onChange',this.visible)
     },
   },
   created() {
