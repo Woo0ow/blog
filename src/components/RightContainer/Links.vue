@@ -4,6 +4,9 @@
         <div>
             github : <a href="https://github.com/Woo0ow">https://github.com/Woo0ow</a>
         </div>
+        <div>
+            gitlab : <a href="https://gitlab.com/halo_gitlab">https://gitlab.com/halo_gitlab</a>
+        </div>
     </div>
 </template>
 <script>
