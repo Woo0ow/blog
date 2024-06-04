@@ -1,18 +1,22 @@
 <template>
     <div id="app">
-        <home/>
+        <!-- top-container -->
+        <top-container />
+        <!-- left-container -->
+        <left-container />
+        <!-- right-container -->
+        <right-container />
     </div>
-  </template>
+</template>
   
- <script>
- import Home from './components/Home/Home.vue';
-    export default{
-        name:'App',
-        components:{
-            Home
-        }
+<script>
+export default {
+    name: 'App',
+    components: {
+        RightContainer: () => ({component:import('./components/RightContainer.vue')}),
+        LeftContainer: () => ({component:import('./components/LeftContainer.vue')}),
+        TopContainer: () => ({component:import('./components/TopContainer.vue')})
     }
+}
 </script>
-<style>
-    
-</style>
+<style></style>
