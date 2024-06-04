@@ -11,8 +11,9 @@
                 <div>
                     <div class="abstract mb-4">{{ Item.abstract }}</div>
                     <div class="row li-link">
-                        <router-link :to="'/filter/' + item.id" v-for="item in Item.tags" :key="item.id" class="tag col-12 mb-3 col-xl-4 mb-xxl-0">「{{ item.name
-                        }}」</router-link>
+                        <router-link :to="'/filter/' + item.id" v-for="item in Item.tags" :key="item.id"
+                            class="tag col-12 mb-3 col-xl-4 mb-xxl-0">「{{ item.name
+                            }}」</router-link>
                         <router-link :to="`/articles/${Item.id}`" class="detail col-12 col-xl-4">阅读全文&gt;&gt;</router-link>
                     </div>
                 </div>
@@ -39,9 +40,22 @@ export default {
             itemsPerPage: 5
         }
     },
+    props: ['params'],
     mounted() {
         this.$store.dispatch('getArticleLi').then(() => {
-            this.articleLi = this.$store.state.article.articles;
+            // this.articleLi = this.$store.state.article.articles;
+            console.log(this.params)
+            if (this.params)
+                this.articleLi = this.$store.state.article.articles.filter(item => {
+                    let res = false
+                    for (let index = 0; index < item.tagId.length; index++) {
+                        if (item.tagId[index] === +this.params.id)
+                            res = true
+                    }
+                    return res
+                })
+            else
+                this.articleLi = this.$store.state.article.articles;
             console.log(this.articleLi)
             this.li = this.articleLi.slice(this.current - 1, this.current + 3)
             this.total = Math.ceil(this.articleLi.length / this.itemsPerPage)
@@ -91,7 +105,8 @@ export default {
 .pager {
     color: #2479cc;
     display: grid;
-     grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-columns: 1fr 1fr 1fr;
+
     div {
         cursor: pointer;
     }

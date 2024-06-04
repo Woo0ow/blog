@@ -11,7 +11,6 @@
     </div>
 </template>
 <script>
-import Loading from '@/components/Loading.vue'
 export default {
     name: 'Home',
     data() {
@@ -19,9 +18,9 @@ export default {
         }
     },
     components: {
-        RightContainer: () => ({component:import('../RightContainer/RightContainer.vue'),loading:Loading}),
-        LeftContainer: () => ({component:import('../LeftContainer.vue'),loading:Loading}),
-        TopContainer: () => ({component:import('../TopContainer.vue'),loading:Loading})
+        RightContainer: () => ({component:import('./RightContainer.vue')}),
+        LeftContainer: () => ({component:import('./LeftContainer.vue')}),
+        TopContainer: () => ({component:import('./TopContainer.vue')})
     }
 }
 </script>

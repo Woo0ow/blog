@@ -1,38 +1,38 @@
-import VueRouter from 'vue-router'
-const BASE_URL='/blog'
+import vuerouter from 'vue-router'
+const base_url='/blog'
 const routes=[
     {
         path:'/',
-        component:()=>import(/* webpackPrefetch: true */'@/components/RightContainer/Articles.vue')
+        component:()=>import(/* webpackprefetch: true */'@/views/Articles.vue')
     },
     {
         path:'/articles/:id',
-        component:()=>import('@/components/RightContainer/Article.vue')
+        component:()=>import('@/views/Article.vue')
     },
     {
         path:'/archive',
-        component:()=>import('@/components/RightContainer/Archive.vue')
+        component:()=>import('@/views/Archive.vue')
     },
     {
         path:'/tags',
-        component:()=>import('@/components/RightContainer/Tags.vue')
+        component:()=>import('@/views/Tags.vue')
     },
     {
         path:'/about',
-        component:()=>import('@/components/RightContainer/About.vue')
+        component:()=>import('@/views/About.vue')
     },
     {
         path:'/links',
-        component:()=>import('@/components/RightContainer/Links.vue')
+        component:()=>import('@/views/Links.vue')
     },
     {
         path:'/filter/:id',
-        component:()=>import('@/components/RightContainer/FilterArticles.vue')
+        component:()=>import('@/views/FilterArticles.vue')
     }
 ]
-const router= new VueRouter({
+const router= new vuerouter({
 	mode:'history',
-    base:BASE_URL,
+    base:base_url,
     routes
 })
 router.beforeEach((to, from, next) => {
