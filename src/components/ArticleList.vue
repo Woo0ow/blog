@@ -41,22 +41,11 @@ export default {
         }
     },
     props: ['params'],
-    mounted() {
-        this.$store.dispatch('getArticleLi').then(() => {
-            if (this.params)
-                this.articleLi = this.$store.state.article.articles.filter(item => {
-                    let res = false
-                    for (let index = 0; index < item.tagId.length; index++) {
-                        if (item.tagId[index] === +this.params.id)
-                            res = true
-                    }
-                    return res
-                })
-            else
-                this.articleLi = this.$store.state.article.articles;
-            this.li = this.articleLi.slice(this.current - 1, this.current + 3)
-            this.total = Math.ceil(this.articleLi.length / this.itemsPerPage)
-        })
+    watch:{
+        params(newVal){
+            Object.assign(this.params,newVal)
+            this.getData()
+        }
     },
     methods: {
         pageChange(add) {
@@ -64,8 +53,28 @@ export default {
             const startIndex = (this.current - 1) * this.itemsPerPage
             const endIndex = startIndex + this.itemsPerPage
             this.li = this.articleLi.slice(startIndex, endIndex)
+        },
+        getData() {
+            this.$store.dispatch('getArticleLi').then(() => {
+                if (this.params)
+                    this.articleLi = this.$store.state.article.articles.filter(item => {
+                        let res = false
+                        for (let index = 0; index < item.tagId.length; index++) {
+                            if (item.tagId[index] === +this.params.id)
+                                res = true
+                        }
+                        return res
+                    })
+                else
+                    this.articleLi = this.$store.state.article.articles;
+                this.li = this.articleLi.slice(this.current - 1, this.current + 3)
+                this.total = Math.ceil(this.articleLi.length / this.itemsPerPage)
+            })
         }
-    }
+    },
+    mounted() {
+        this.getData()
+    },
 }
 </script>
 <style lang="scss" scoped>
