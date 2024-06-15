@@ -3,7 +3,7 @@ const base_url='/blog'
 const routes=[
     {
         path:'/',
-        components:()=>import(/* webpackprefetch: true */'@/views/Articles.vue')
+        component:()=>import(/* webpackprefetch: true */'@/views/Articles.vue')
     },
     {
         path:'/articles/:id',
@@ -44,6 +44,7 @@ router.afterEach(() => {
   router.app.$root.$emit('hide-loading');
 });
 router.onError((err)=>{
+    console.log(err)
     location.reload();
 })
 export default router 
